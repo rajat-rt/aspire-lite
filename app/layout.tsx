@@ -12,9 +12,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en">
       <body>
         <div className="flex ">
-          <div className=""><Sidebar/></div>
+          <div className="h-[100vh]"><Sidebar/></div>
           <div className="w-[calc(100vw-340px)]">{children}</div>
         </div>
+        <div id="portal-root"></div>
       </body>
     </html>
   );

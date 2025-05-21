@@ -1,9 +1,7 @@
-import Image from "next/image";
+import WorkInProgress from "@/components/WorkInProgress";
 
 export default function Home() {
   return (
-    <div className="">
-     Home page...
-    </div>
+    <WorkInProgress/>
   );
 }

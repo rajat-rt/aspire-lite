@@ -2,28 +2,7 @@ import React from 'react'
 import * as Accordion from "@radix-ui/react-accordion";
 import Image from 'next/image';
 import TransactionList from '@/components/Cards/TransactionList';
-const dummyData = [{
-    name: 'John',
-    transactionDate: '20 May, 2020',
-    transactionAmount: '$23',
-    description: 'Refund on debit card',
-    type: 'debit',
-    subType: 'transaction'
-}, {
-    name: 'John',
-    transactionDate: '20 May, 2020',
-    transactionAmount: '$23',
-    description: 'Refund on debit card',
-    type: 'credit',
-    subType: 'flight'
-}, {
-    name: 'John',
-    transactionDate: '20 May, 2020',
-    transactionAmount: '$23',
-    description: 'Refund on debit card',
-    type: 'credit',
-    subType:'alert'
-}];
+
 const CardInfo = () => {
   return (
     <div>
@@ -51,7 +30,7 @@ const CardInfo = () => {
                     </Accordion.Trigger>
             </Accordion.Header>
             <Accordion.Content className="pt-0 bg-white rounded-md">
-                <TransactionList recentTransaction={dummyData}/>
+                <TransactionList/>
             </Accordion.Content>
         </Accordion.Item>
     </Accordion.Root>

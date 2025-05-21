@@ -23,7 +23,7 @@ export default function SimpleCarousel({currentIndex, setCurrentIndex, totalList
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`w-3 h-3 rounded-full ${
+            className={`w-3 h-3 cursor-pointer rounded-full ${
               index === currentIndex ? "bg-green-500" : "bg-gray-300"
             }`}
           />

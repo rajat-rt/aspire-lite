@@ -1,0 +1,3 @@
+export const DEFAULT_MAX_AVAILABLE_AMOUNT = 8000;
+export const DEFAULT_CARD_STATUS = true;
+export const DEFAULT_MAX_EXPIRY_DATE = 15;

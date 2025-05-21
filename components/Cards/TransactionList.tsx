@@ -1,18 +1,8 @@
 
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import Image from 'next/image';
+import { Cardcontext } from '@/app/context/cardInfoContext';
 
-type TransactionDetailType =  {
-    name: string,
-    transactionDate: string,
-    transactionAmount: number,
-    description: string
-    type: string,
-    subType: string
-};
-type TransactionListProps = {
-    recentTransaction: TransactionDetailType[]
-};
 const displayMapping = {
     'transaction': {
         color: 'bg-[#009DFF1A]',
@@ -51,17 +41,21 @@ const List = ({ item, index }) => {
             </li>)
 }
 
-const TransactionList = (props: TransactionListProps[]) => {
+const TransactionList = () => {
     const [allTransaction, setAllTransaction] = useState(false);
+    const { selectedCardsInfo } = useContext(Cardcontext);
+    if(selectedCardsInfo?.recentTransaction && selectedCardsInfo?.recentTransaction?.length === 0) {
+        return <p className='flex justify-center items-center h-[150px] text-[12px] text-[#222222] opacity-40'>No data Found</p>
+    }
     return (
         <div>
         <ul className='max-h-[218px] overflow-scroll'>
-            {props?.recentTransaction.slice(0,MAX_TRANSACTION_LIMIT).map((item, index) => {
+            {selectedCardsInfo?.recentTransaction?.slice(0,MAX_TRANSACTION_LIMIT).map((item, index) => {
                 return <List item={item} index={index} key={index}/>
             })}
-            {props?.recentTransaction?.length > MAX_TRANSACTION_LIMIT ? <>
+            {selectedCardsInfo?.recentTransaction?.length > MAX_TRANSACTION_LIMIT ? <>
                 {allTransaction ? <>
-                    {props?.recentTransaction.slice(MAX_TRANSACTION_LIMIT,).map((item, index) => {
+                    {selectedCardsInfo?.recentTransaction?.slice(MAX_TRANSACTION_LIMIT,).map((item, index) => {
                         return <List item={item} index={index} key={index}/>
                     })}
                     </>: ''}
