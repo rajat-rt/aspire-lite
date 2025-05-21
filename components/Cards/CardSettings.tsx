@@ -1,15 +1,15 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Modal from '../Modal';
-import { Cardcontext } from '@/app/context/cardInfoContext';
+import { useCardInfoContext } from '@/app/context/cardInfoContext';
 
 const CardSettings = () => {
     const [openFreezeModal, setFreezeModal] = useState(false);
-    const { selectedCardsInfo, allCardsInfo, setAllCardsInfo  } = useContext(Cardcontext);
+    const { selectedCardsInfo, allCardsInfo, setAllCardsInfo  } = useCardInfoContext();
     const isFreezed = !selectedCardsInfo?.active;
     const handleFreezeOperation = () => {
         const updateAllCardInfo =  allCardsInfo.map((card) => {
-            if(card.cardNumber === selectedCardsInfo.cardNumber){
+            if(card.cardNumber === selectedCardsInfo?.cardNumber){
                 card.active = !card.active;
             }
             return card;

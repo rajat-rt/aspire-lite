@@ -1,9 +1,10 @@
 
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image';
-import { Cardcontext } from '@/app/context/cardInfoContext';
+import { useCardInfoContext } from '@/app/context/cardInfoContext';
+import { transactionInfo, displayMappingType } from '@/app/interface';
 
-const displayMapping = {
+const displayMapping: Record<displayMappingType, { color: string, icon: string}> = {
     'transaction': {
         color: 'bg-[#009DFF1A]',
         icon: 'Transaction.svg',
@@ -17,9 +18,13 @@ const displayMapping = {
         icon: 'Alert.svg',
     }
 }
-const MAX_TRANSACTION_LIMIT = 2;
 
-const List = ({ item, index }) => {
+const MAX_TRANSACTION_LIMIT = 2;
+interface ListProps {
+  item: transactionInfo;
+  index: number;
+}
+const List: React.FC<ListProps> = ({ item , index }) => {
     let imageSrc = displayMapping[item?.subType ?? 'transaction'];
     return (<li className='flex px-[24px] items-start py-[20px] border-[#F5F5F5] border-b' key={index}>
                 <div className={`flex items-center justify-center rounded-[50%] w-[48px] h-[48px] ${imageSrc.color}`}>
@@ -43,7 +48,7 @@ const List = ({ item, index }) => {
 
 const TransactionList = () => {
     const [allTransaction, setAllTransaction] = useState(false);
-    const { selectedCardsInfo } = useContext(Cardcontext);
+    const { selectedCardsInfo } = useCardInfoContext();
     if(selectedCardsInfo?.recentTransaction && selectedCardsInfo?.recentTransaction?.length === 0) {
         return <p className='flex justify-center items-center h-[150px] text-[12px] text-[#222222] opacity-40'>No data Found</p>
     }
@@ -53,7 +58,7 @@ const TransactionList = () => {
             {selectedCardsInfo?.recentTransaction?.slice(0,MAX_TRANSACTION_LIMIT).map((item, index) => {
                 return <List item={item} index={index} key={index}/>
             })}
-            {selectedCardsInfo?.recentTransaction?.length > MAX_TRANSACTION_LIMIT ? <>
+            {selectedCardsInfo?.recentTransaction?.length ?? 0 > MAX_TRANSACTION_LIMIT ? <>
                 {allTransaction ? <>
                     {selectedCardsInfo?.recentTransaction?.slice(MAX_TRANSACTION_LIMIT,).map((item, index) => {
                         return <List item={item} index={index} key={index}/>

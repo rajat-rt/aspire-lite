@@ -1,7 +1,7 @@
 "use client";
-import React, { useContext, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import Image from 'next/image';
-import { Cardcontext } from '@/app/context/cardInfoContext'
+import { useCardInfoContext } from '@/app/context/cardInfoContext'
 import Modal from '@/components/Modal';
 import {
     generateRandomNumber,
@@ -12,11 +12,10 @@ import {
     DEFAULT_CARD_STATUS
 } from '@/app/constants';
 
-
 const CardHeader = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [cardHolderName, setCardHolderName] = useState("");
-    const { selectedCardsInfo, allCardsInfo, setAllCardsInfo } = useContext(Cardcontext)
+    const { selectedCardsInfo, allCardsInfo, setAllCardsInfo } = useCardInfoContext();
 
     const addNewCardHandler = () => {
         if(cardHolderName === '')
@@ -67,10 +66,7 @@ const CardHeader = () => {
                     <input type="text" 
                         value={cardHolderName} 
                         placeholder='Enter the card holder Name...' 
-                        onChange={(e) => {
-                            console.log("--->>>", e, e.target.value)
-                            setCardHolderName(() => e.target.value)
-                        }}
+                        onChange={(e) => setCardHolderName(() => e.target.value)}
                         className='w-full px-[12px] py-[6px] border border-grey-500 rounded-md'/>
                 </div>
             </Modal>

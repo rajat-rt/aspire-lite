@@ -1,13 +1,13 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image';
-import { Cardcontext } from '@/app/context/cardInfoContext';
+import { useCardInfoContext } from '@/app/context/cardInfoContext';
 
 const DigitalCard = () => {
-    const { selectedCardsInfo } = useContext(Cardcontext);
+    const { selectedCardsInfo } = useCardInfoContext();
     const [showCardNumber, setCardNumber] = useState(false);
     const dummyArr = new Array(4).fill(1);
     const isFrrezed = !selectedCardsInfo?.active;
-    console.log("selectedCardsInfo", selectedCardsInfo);
+
     return (
         <div className='w-[414px] flex justify-center items-end flex-col'>
             <span 

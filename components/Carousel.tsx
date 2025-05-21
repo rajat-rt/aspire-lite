@@ -1,6 +1,15 @@
 "use client";
 
-export default function SimpleCarousel({currentIndex, setCurrentIndex, totalList, children}) {
+import React from "react";
+
+interface CarouselTypeProps {
+  currentIndex: number,
+  setCurrentIndex: (num: number) => void,
+  totalList: number,
+  children: React.ReactNode
+};
+
+const SimpleCarousel: React.FC<CarouselTypeProps> = ({currentIndex, setCurrentIndex, totalList, children})  => {
 
   const dotsArr = new Array(totalList).fill(1);
   console.log("dotsArr", dotsArr);
@@ -32,3 +41,5 @@ export default function SimpleCarousel({currentIndex, setCurrentIndex, totalList
     </div>
   );
 }
+
+export default SimpleCarousel;

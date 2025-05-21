@@ -1,9 +1,9 @@
 "use client";
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import CardHeader from './CardHeader'
 import DebitCardSection from './DebitCardSection';
 import AllCompanyCards from './AllCardCompanySection';
-import { Cardcontext } from '@/app/context/cardInfoContext';
+import { useCardInfoContext } from '@/app/context/cardInfoContext';
 
 const options = {
     'my-debit-card': {
@@ -14,16 +14,23 @@ const options = {
     comp: <AllCompanyCards/>
 }};
 
+type OptionKey = 'my-debit-card' | 'all-company-cards';
 
 const Cards = () => {
-    const [selectedOptions, setSelectedOptions] = useState('my-debit-card');
-    const { setAllCardsInfo, setSelectedCardsInfo } = useContext(Cardcontext);
+    const [selectedOptions, setSelectedOptions] = useState<OptionKey>('my-debit-card');
+    const { setAllCardsInfo, setSelectedCardsInfo } = useCardInfoContext();
 
     const fetchData = async () => {
-        let res = await fetch('/api/debit-card/');
-        let data = await res.json();
-        setAllCardsInfo(() => data);
-        setSelectedCardsInfo(() => data[0]);
+        try {
+            const res = await fetch('/api/debit-card/');
+            const data = await res.json();
+            setAllCardsInfo(data);
+            if (data.length > 0) {
+            setSelectedCardsInfo(data[0]);
+            }
+        } catch (error) {
+            console.error("Failed to fetch cards", error);
+        }
     }
     useEffect(() => {
         fetchData();
@@ -32,7 +39,7 @@ const Cards = () => {
         <div className='p-[60px]'>
             <CardHeader/>
             <div className='flex flex-row mb-[12px] mt-[40px]'>
-                {Object.keys(options).map((op, index) => {
+                {(Object.keys(options) as OptionKey[]).map((op, index) => {
                     return (<div 
                         key={index}
                         className={`text-[14px] text-[#222222] mr-[32px] cursor-pointer ${selectedOptions != op ? 'opacity-30 ': 'border-b border-[#23CEFD] border-b-[2px]'}`}
