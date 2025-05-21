@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 💳 Aspire Card Management Web Application
 
-## Getting Started
+A responsive web application that replicates the Aspire card management experience, developed as part of a code challenge. It features a pixel-perfect UI, card carousel, modal-based interactions, card freezing functionality, and mock API-driven architecture.
 
-First, run the development server:
+---
+
+## 🚀 Live Demo
+
+**🔗 Hosted App:** [https://aspire-lite.netlify.app/]  
+**📦 GitHub Repo:** [https://github.com/rajat-rt/aspire-lite]
+
+---
+
+## 🖥️ CSS Challenge
+
+The design has been implemented with high fidelity using a modern CSS framework.  
+All assets were exported from Adobe XD.
+
+- ✅ **Desktop View:** Pixel-perfect implementation
+
+**Design Reference:**
+
+- [Desktop Design](https://xd.adobe.com/view/80c753f2-db2f-4dfc-b6c2-ce39a4c787f0-d594/screen/7d8639be-16a2-4dc6-9ddc-c3bcd8d8f1ee/)
+- [Mobile Design](https://xd.adobe.com/view/80c753f2-db2f-4dfc-b6c2-ce39a4c787f0-d594)
+
+---
+
+## 🔧 Tech Stack
+
+- ⚛️ **Next.js** with **TypeScript** (React Framework for SSR and SSG)
+- 💨 **Tailwind CSS** (utility-first CSS framework)
+- 🧠 **React Context API** (for global state management)
+- 💾 **Local Storage** (for persistent state)
+- 🔧 **Next.js App Router** (for file-based routing and layout management)
+
+---
+
+## 🧠 Features
+
+- 🎨 Pixel-perfect Aspire UI
+- ➕ Add new card via modal
+  - Generates random card number and expiration date
+- ❄️ Freeze/unfreeze cards with visual feedback
+  - Frozen cards are shown with reduced opacity
+- 💾 Data persistence via State Management
+- 💡 API-mocking architecture with simulated endpoints
+
+---
+
+## 🏗️ Project Structure
+
+src/
+│
+├── components/ # Reusable UI components
+├── context/ # React context for state management
+├── hooks/ # Custom hooks
+├── utils/ # Utility functions (e.g. for generating card data)
+├── pages/ # Main page layout
+├── assets/ # Design assets (e.g. icons, images)
+├── types/ # TypeScript interfaces and types
+└── App.tsx # Main app component
+
+---
+
+## ⚙️ Getting Started
+
+### 🛠️ Prerequisites
+
+- Node.js ≥ 18
+- Yarn or npm
+
+### 📦 Installation
 
 ```bash
+git clone https://github.com/your-username/aspire-card-app.git
+cd aspire-card-app
+npm install
+
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
