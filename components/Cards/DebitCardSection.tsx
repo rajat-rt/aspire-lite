@@ -7,8 +7,8 @@ import CardSettings from './CardSettings';
 import SimpleCarousel from '@/components/Carousel';
 
 const DebitCardSection = () => {
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const { allCardsInfo, setSelectedCardsInfo } = useCardInfoContext();
+
+    const { allCardsInfo, setSelectedCardsInfo, currentIndex,  setCurrentIndex} = useCardInfoContext();
     
     useEffect(() => {
         setSelectedCardsInfo(() => allCardsInfo[currentIndex])

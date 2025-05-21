@@ -17,7 +17,7 @@ const CardInfo = () => {
                 </Accordion.Trigger>
             </Accordion.Header>
             <Accordion.Content className="p-[24px] pt-0 bg-white rounded-md">
-            Accordion Content goes here.
+                <p className='flex justify-center items-center h-[150px] text-[12px] text-[#222222] opacity-40 text-center'>Card Details are not available at this moment<br/>Please try again after some time!!!</p>
             </Accordion.Content>
         </Accordion.Item>
         <Accordion.Item value="item-2" className='mb-[24px] bg-[#F5F9FF] border-[#F0F0F0] border-[1px] rounded-md'>

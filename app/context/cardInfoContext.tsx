@@ -9,8 +9,9 @@ interface ProviderProps {
 
 export const CardContextProvider = ({ children }: ProviderProps) => {
     const [selectedCardsInfo, setSelectedCardsInfo] = useState<CardInfo | null>(null);
-    const [allCardsInfo, setAllCardsInfo] = useState<CardInfo[]>([])
-    return (<Cardcontext.Provider value={{ selectedCardsInfo, setSelectedCardsInfo, allCardsInfo, setAllCardsInfo }}>
+    const [allCardsInfo, setAllCardsInfo] = useState<CardInfo[]>([]);
+    const [currentIndex, setCurrentIndex] = useState<number>(0);
+    return (<Cardcontext.Provider value={{ selectedCardsInfo, setSelectedCardsInfo, allCardsInfo, setAllCardsInfo, currentIndex, setCurrentIndex }}>
         {children}
     </Cardcontext.Provider>)
 };

@@ -13,9 +13,9 @@ import {
 } from '@/app/constants';
 
 const CardHeader = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [cardHolderName, setCardHolderName] = useState("");
-    const { selectedCardsInfo, allCardsInfo, setAllCardsInfo } = useCardInfoContext();
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const [cardHolderName, setCardHolderName] = useState<string>("");
+    const { selectedCardsInfo, allCardsInfo, setAllCardsInfo, setCurrentIndex } = useCardInfoContext();
 
     const addNewCardHandler = () => {
         if(cardHolderName === '')
@@ -35,16 +35,18 @@ const CardHeader = () => {
         setCardHolderName("");
         setIsOpen(false);
         setAllCardsInfo(() => [...allCardsInfo, cardPayload ]);
+        setCurrentIndex(allCardsInfo.length);
     };
 
     const modalActionBtnList = useMemo(() => [{
         label: 'Cancel',
         callBack: () => setIsOpen(false),
-        type: 'secondary'
+        type: 'secondary',
     }, {
         label: 'Save',
         callBack: addNewCardHandler,
-        type: 'primary'
+        type: 'primary',
+        disabled: cardHolderName === ''
     }], [selectedCardsInfo, cardHolderName]);
 
     return (
@@ -61,7 +63,7 @@ const CardHeader = () => {
                 <span className='text-[#fff] ml-[8px] text-[13px]'>New Card</span>
             </div>
             <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} actionList={modalActionBtnList}>
-                <div className='py-[20px]'>
+                <div className='py-[20px] h-[250px]'>
                     <h2 className="text-lg font-semibold mb-4">Adding a New card</h2>
                     <input type="text" 
                         value={cardHolderName} 

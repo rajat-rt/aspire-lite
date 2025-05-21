@@ -24,4 +24,6 @@ export interface CardContextType {
   setSelectedCardsInfo: React.Dispatch<React.SetStateAction<CardInfo | null>>;
   allCardsInfo: CardInfo[];
   setAllCardsInfo: React.Dispatch<React.SetStateAction<CardInfo[]>>;
+  currentIndex: number,
+  setCurrentIndex: React.Dispatch<React.SetStateAction<number>>
 }

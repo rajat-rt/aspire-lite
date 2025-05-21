@@ -4,7 +4,8 @@ import { createPortal } from 'react-dom';
 type  actionButtonType = {
     label: string;
     callBack: () => void;
-    type: string
+    type: string,
+    disabled?: boolean
 } 
 
 interface ModalProps {
@@ -39,7 +40,7 @@ export default function Modal({ isOpen, onClose, children, actionList }: ModalPr
                 return <li key={_idx} 
                     className={`flex px-[12px] py-[6px] rounded-sm cursor-pointer mr-[20px]  border-[1px] 
                         ${item.type === 'primary' ? 'text-white bg-[#325BAF] border-[#325BAF]' : 'bg-white text-[#325BAF] border-[#325BAF]'}`}>
-                    <button className="cursor-pointer" onClick={item.callBack}>{item.label}</button>
+                    <button className="cursor-pointer disabled:cursor-not-allowed disabled:opacity-50" disabled={item.disabled} onClick={item.callBack}>{item.label}</button>
                 </li>
             })}
         </ul>
