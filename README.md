@@ -6,7 +6,7 @@ A responsive web application that replicates the Aspire card management experien
 
 ## 🚀 Live Demo
 
-**🔗 Hosted App:** [https://aspire-lite.netlify.app/]  
+**🔗 Hosted App:** [https://aspire-lite.netlify.app/cards]  
 **📦 GitHub Repo:** [https://github.com/rajat-rt/aspire-lite]
 
 ---
